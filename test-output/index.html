@@ -145,6 +145,9 @@
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite thread-count=&quot;1&quot; configfailurepolicy=&quot;continue&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Sample Cucumber TestNG Maven project&quot; parallel=&quot;methods&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;utils.TestNGListerner&quot;/&gt;
+  &lt;/listeners&gt;
   &lt;test thread-count=&quot;1&quot; name=&quot;Cucumber with TestNG&quot; parallel=&quot;methods&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;runner.MyRunner&quot;&gt;
@@ -203,12 +206,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'scenario')
 data.setCell(0, 2, 'runner.MyRunner')
-data.setCell(0, 3, 5018);
+data.setCell(0, 3, 3550);
 window.suiteTableData['Sample_Cucumber_TestNG_Maven_project']= { tableData: data, tableDiv: 'times-div-Sample_Cucumber_TestNG_Maven_project'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 5 seconds</span>
+              <span class="suite-total-time">Total running time: 3 seconds</span>
               <div id="times-div-Sample_Cucumber_TestNG_Maven_project">
               </div> <!-- times-div-Sample_Cucumber_TestNG_Maven_project -->
             </div> <!-- times-div -->
@@ -241,19 +244,19 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">setUpClass</span>
-                <span class="method-start">1798 ms</span>
+                <span class="method-start">7115 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">scenario("My First scenario", "My sample to test Annotations")</span>
-                <span class="method-start">1904 ms</span>
+                <span class="method-start">7285 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">6925 ms</span>
+                <span class="method-start">10886 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">7041 ms</span>
+                <span class="method-start">12146 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

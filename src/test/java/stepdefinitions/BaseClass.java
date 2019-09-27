@@ -3,13 +3,19 @@ package stepdefinitions;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
@@ -18,17 +24,18 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
 public class BaseClass {
-	public static WebDriver driver;
+	public static RemoteWebDriver driver;
 	public static Properties prop;
 	public static ExtentReports report;
 	public static ExtentTest test;
 
 	@BeforeSuite
-	public void Initiaziation() {
+	public void Initiaziation() throws MalformedURLException {
 		System.out.println("Executing TestNG's @Beforesuite...");
 		
 		prop=getProperty();
-		startDriver(prop.getProperty("browsername"));
+		//startDriver(prop.getProperty("browsername"));
+		startDockerDriver(prop.getProperty("browsername"));
 		report=new ExtentReports();
 		
 	}
@@ -40,7 +47,7 @@ public class BaseClass {
 		driver.quit();
 	}
 	
- public WebDriver startDriver(String browsername) {
+ public RemoteWebDriver startDriver(String browsername) {
 	 if(browsername.equalsIgnoreCase("Chrome")) {
 			
 			System.setProperty("webdriver.chrome.driver", "src/test/resources/lib/chromedriver");
@@ -66,6 +73,24 @@ public class BaseClass {
 	return driver;
 	 
  }
+ 
+ public RemoteWebDriver startDockerDriver(String browsername) throws MalformedURLException {
+	 System.out.println("Running in Docker container");
+	 
+	 DesiredCapabilities cap = DesiredCapabilities.firefox();
+		cap.setPlatform(Platform.LINUX);
+	
+	    String spec= "http://localhost:4444/wd/hub";
+		Capabilities desiredCapabilities;
+		driver = new RemoteWebDriver(new URL(spec), cap);
+	 
+	
+	 
+		 
+  System.out.println(driver+ "Driver created successfully");
+ return driver;
+ }
+ 
  
  public Properties getProperty(){
 		

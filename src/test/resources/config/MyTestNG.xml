@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">  
 <suite name="Sample Cucumber TestNG Maven project" verbose="1" thread-count="1" parallel="methods" configfailurepolicy="continue">  
+	
+	<listeners>
+	<listener class-name="utils.TestNGListerner"/>
+	</listeners>
 	 <test name="Cucumber with TestNG">  
 		
 		

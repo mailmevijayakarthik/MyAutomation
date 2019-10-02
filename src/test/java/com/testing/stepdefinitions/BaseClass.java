@@ -13,15 +13,19 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.remote.MobileCapabilityType;
 
 /**
  * @author Vijayakarthikeyan
@@ -29,6 +33,7 @@ import com.aventstack.extentreports.ExtentTest;
  */
 public class BaseClass {
 	public static RemoteWebDriver driver;
+	public static AppiumDriver<MobileElement> mdriver;
 	public static Properties prop;
 	public static ExtentReports report;
 	public static ExtentTest test;
@@ -44,7 +49,6 @@ public class BaseClass {
 		prop=getProperty();
 		
 		DriverInitialization(prop.getProperty("browsername"));
-		
 		//getlistoffiles();
 		report=new ExtentReports();
 		
@@ -99,6 +103,25 @@ public class BaseClass {
 	 			
 	 		}else if (browsername.equalsIgnoreCase("safari")) {
 	 			driver = new SafariDriver();
+	 		}else if (browsername.equalsIgnoreCase("mobileChrome")) {
+
+	 			 DesiredCapabilities caps = new DesiredCapabilities();
+	 			caps.setCapability("platformName", "Android");
+	 			//capabilities.setCapability("platformVersion", "8.0.0");
+	 			//capabilities.setCapability("udid", "ee9bb4d1");
+	 			caps.setCapability("browserName", "Chrome");
+	 			caps.setCapability("deviceName", "Galaxy S7");
+	 			 try {
+	 				driver =new RemoteWebDriver(new URL(prop.getProperty("AppiumurlPort")),caps);
+	 				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	 				
+	 			} catch (MalformedURLException e) {
+	 				// TODO Auto-generated catch block
+	 				e.printStackTrace();
+	 			}
+	 			 
+	 			
+	 			 
 	 		}
 	    	
 	    }
@@ -106,7 +129,7 @@ public class BaseClass {
 		 
   System.out.println(driver+ "Driver created successfully");
   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  driver.get(prop.getProperty("browserurl"));
+  
  return driver;
  }
  
@@ -145,5 +168,26 @@ public class BaseClass {
     {
         System.out.println(f);
     }
+ }
+
+ public RemoteWebDriver getMobileDriver() {
+	
+	 DesiredCapabilities caps = new DesiredCapabilities();
+	 caps.setCapability(CapabilityType.PLATFORM, "ANDROID");
+	 caps.setCapability(MobileCapabilityType.DEVICE_NAME, "ee9bb4d1");
+	 caps.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+	 caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 60);
+	 try {
+		URL url = new URL("http://127.0.0.1:4723/wd/hub");
+		
+		mdriver = new AppiumDriver<>(url, caps);
+		
+	} catch (MalformedURLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	 
+	 return mdriver;
+	 
  }
 }

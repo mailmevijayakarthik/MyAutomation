@@ -1,12 +1,11 @@
-Feature: Testing internet.herokuapp functionalities
-#Scenario: My First scenario 
-#
-#Given I am in the first step 
-#And Enter the second step
-#When I enter third step 
-#Then Answer is fourth step
+Feature: Handling Table using Selenium
 
 
-Scenario: Verify my Login for a Form Authentication
+Scenario: Verify getting the needed data from the table using selenium
 
-Given click on Form Authentication link
+Given navigating to Google Shopping list page
+And Search 'milk' in the search bar
+And enable/check the Buy on Google option in shopping page
+When search for product less than 15
+Then display the product falling under the given category
+ 

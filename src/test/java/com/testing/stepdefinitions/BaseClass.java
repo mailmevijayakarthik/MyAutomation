@@ -88,14 +88,14 @@ public class BaseClass {
 	    	 System.out.println("Creating Driver for Local Execution ..");
 	    	 if(browsername.equalsIgnoreCase("Chrome")) {
 	 			
-	 			System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\lib\\chromedriver.exe");
+	 			System.setProperty("webdriver.chrome.driver", "src/test/resources/lib/chromedriver");
 	 			driver = new ChromeDriver();
 	 			
 	 		}else if (browsername.equalsIgnoreCase("FireFox")) {
 	 			
 	 			System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\lib\\geckodriver.exe");
 	 			driver = new FirefoxDriver();
-	 			
+	 			 
 	 		}else if (browsername.equalsIgnoreCase("IE")) {
 	 			
 	 			System.setProperty("webdriver.ie.driver", "src\\test\\resources\\lib\\IEDriverserver.exe");
@@ -107,10 +107,8 @@ public class BaseClass {
 
 	 			 DesiredCapabilities caps = new DesiredCapabilities();
 	 			caps.setCapability("platformName", "Android");
-	 			//capabilities.setCapability("platformVersion", "8.0.0");
-	 			//capabilities.setCapability("udid", "ee9bb4d1");
 	 			caps.setCapability("browserName", "Chrome");
-	 			caps.setCapability("deviceName", "Galaxy S7");
+	 			caps.setCapability("deviceName", "emulator-5554");
 	 			 try {
 	 				driver =new RemoteWebDriver(new URL(prop.getProperty("AppiumurlPort")),caps);
 	 				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -121,6 +119,21 @@ public class BaseClass {
 	 			}
 	 			 
 	 			
+	 			 
+	 		} else if(browsername.equalsIgnoreCase("mobileSafari")) {
+	 			DesiredCapabilities caps = new DesiredCapabilities();
+	 			caps.setCapability("platformName", "iOS");
+	 			caps.setCapability("browserName", "safari");
+	 			caps.setCapability("deviceName", "Iphone 7");
+	 			caps.setCapability("automationName", "XCUITest");
+	 			 try {
+	 				driver =new RemoteWebDriver(new URL(prop.getProperty("AppiumurlPort")),caps);
+	 				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	 				
+	 			} catch (MalformedURLException e) {
+	 				// TODO Auto-generated catch block
+	 				e.printStackTrace();
+	 			}
 	 			 
 	 		}
 	    	

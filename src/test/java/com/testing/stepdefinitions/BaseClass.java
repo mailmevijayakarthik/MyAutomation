@@ -47,9 +47,7 @@ public class BaseClass {
 		System.out.println("Executing TestNG's @Beforesuite...");
 		
 		prop=getProperty();
-		
 		DriverInitialization(prop.getProperty("browsername"));
-		//getlistoffiles();
 		report=new ExtentReports();
 		
 	}
@@ -123,8 +121,9 @@ public class BaseClass {
 	 		} else if(browsername.equalsIgnoreCase("mobileSafari")) {
 	 			DesiredCapabilities caps = new DesiredCapabilities();
 	 			caps.setCapability("platformName", "iOS");
-	 			caps.setCapability("browserName", "safari");
-	 			caps.setCapability("deviceName", "Iphone 7");
+	 			caps.setCapability(CapabilityType.BROWSER_NAME, "safari");
+	 			caps.setCapability("platformVersion", "10.3");
+	 			caps.setCapability("deviceName", "iPhone 7");
 	 			caps.setCapability("automationName", "XCUITest");
 	 			 try {
 	 				driver =new RemoteWebDriver(new URL(prop.getProperty("AppiumurlPort")),caps);
@@ -155,6 +154,7 @@ public class BaseClass {
 		try {
 			prop.load(new FileInputStream("src/test/resources/environment.properties"));
 			prop.load(new FileInputStream(prop.getProperty("resourcepath")));
+			prop.load(new FileInputStream("src/test/resources/qa/Endpoint.xml"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -7,6 +7,8 @@ import com.testing.utils.BaseRestTest;
 
 import cucumber.api.java.en.Given;
 import io.restassured.RestAssured;
+import io.restassured.authentication.PreemptiveAuthProvider;
+import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -44,8 +46,16 @@ RestAssured.baseURI=prop.getProperty("Endpoint.baseurl");
 		// Request Object 
 		RequestSpecification httprequest=RestAssured.given();
 		
-		// Request Parameters 
+		/*
+		 * // Basic Authentication with Username and password PreemptiveBasicAuthScheme
+		 * auth = new PreemptiveBasicAuthScheme(); auth.setUserName("user");
+		 * auth.setPassword("fdfd");
+		 * 
+		 * RestAssured.authentication=auth;
+		 */
 		
+		
+		// Request Parameters 
 		JSONObject requestParams=new JSONObject();
 		
 		requestParams.put("FirstName","JohnXYZ");
@@ -67,9 +77,7 @@ RestAssured.baseURI=prop.getProperty("Endpoint.baseurl");
 				int statuscode = response.statusCode();
 				System.out.println("StatusCode :"+ statuscode);
 				
-				
 			
-				
 				
 		// Verification checkpoints
 		/*

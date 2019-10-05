@@ -12,7 +12,7 @@ import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.PickleEventWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
 
-@CucumberOptions(features=("./src/test/resources/features"),
+@CucumberOptions(features=("./src/test/resources/features/Testingsample.feature"),
 				 glue= {"com.testing.stepdefinitions"},
 				 strict = true,
 				 plugin= {"pretty","html:target/cucumber",

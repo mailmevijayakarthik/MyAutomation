@@ -6,22 +6,21 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.testing.stepdefinitions.BaseClass;
+import com.testing.utils.BaseRestTest;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.PickleEventWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
 
-@CucumberOptions(features=("./src/test/resources/features"),
+@CucumberOptions(features=("./src/test/resources/features/SampleRESTAssured.feature"),
 				 glue= {"com.testing.stepdefinitions"},
 				 strict = true,
 				 plugin= {"pretty","html:target/cucumber",
-						 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-				 tags = {"@mobileweb"}
+						 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
                  )
 
-
-public class MobileAutomationRunner extends BaseClass{
+public class RESTRunner extends BaseRestTest{
 private TestNGCucumberRunner testNGCucumberRunner;
 
 	

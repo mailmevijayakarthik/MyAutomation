@@ -16,20 +16,30 @@
 	 <selenium.version>3.4.0</selenium.version>  
 	 <testNG.version>6.14.3</testNG.version> 
 	 <appium.javaclient>7.2.0</appium.javaclient>   
- </properties>  
- <build>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>  
-			<artifactId>maven-compiler-plugin</artifactId>  
-			<version>${maven.compiler.version}</version>  
-			<configuration>
-				<source>${java.version}</source>  
-				<target>${java.version}</target>  
-			</configuration>
-		</plugin>
-	</plugins>
-</build>  
+ </properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M3</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/resources/config/MyTestNG.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>  
  <dependencies>
 	 <dependency>
 		 <groupId>io.cucumber</groupId>  
@@ -92,5 +102,29 @@
 		<artifactId>java-client</artifactId>
 		<version>${appium.javaclient}</version>
 	</dependency>
+	<dependency>
+		<groupId>io.rest-assured</groupId>
+		<artifactId>rest-assured</artifactId>
+		<version>3.1.0</version>
+		<scope>test</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>com.googlecode.json-simple</groupId>
+		<artifactId>json-simple</artifactId>
+		<version>1.1.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi</artifactId>
+		<version>4.1.0</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+	<dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi-ooxml</artifactId>
+		<version>4.1.0</version>
+	</dependency>
+
  </dependencies> 
 </project>

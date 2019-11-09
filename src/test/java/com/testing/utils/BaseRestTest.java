@@ -5,17 +5,24 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.junit.BeforeClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeGroups;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 public class BaseRestTest {
 	public static Properties prop;
-	
-@BeforeSuite
-public void RESTstartup() {
 
-	System.out.println("Starting REST ASSURED Test...");
+@Parameters("myname")
+@BeforeClass
+public void RESTstartup(@Optional("Arul")String myname) {
+
+	System.out.println("Starting REST ASSURED Test.......");
 	
+	System.out.println("My Name :"+myname);
 	prop=getProperty();
 
 }

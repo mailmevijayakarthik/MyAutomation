@@ -2,9 +2,19 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">  
 <suite name="Sample Cucumber TestNG Maven project" verbose="1" thread-count="1" parallel="methods" configfailurepolicy="continue">  
 	
-	
+	 <parameter name ="myname" value ="karthik"></parameter>
 	 <test name="Cucumber For Rest Assured Runner">  
 		
+		 <classes>
+			 <class name="com.testing.runner.RESTRunner">  
+				 <methods>
+					 <include name="scenario"/>  
+				 </methods>
+			</class>
+		</classes>
+	</test>
+	 <parameter name ="myname" value ="Vijay"></parameter>
+	<test name="Cucumber 2 For Rest Assured Runner">  
 		
 		 <classes>
 			 <class name="com.testing.runner.RESTRunner">  

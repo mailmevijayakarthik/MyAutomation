@@ -15,7 +15,8 @@
 	 <cucumber.version>4.2.0</cucumber.version>  
 	 <selenium.version>3.4.0</selenium.version>  
 	 <testNG.version>6.14.3</testNG.version> 
-	 <appium.javaclient>7.2.0</appium.javaclient>   
+	 <appium.javaclient>7.2.0</appium.javaclient>
+	 <defaultSuitePath>src/test/resources/config/</defaultSuitePath> 
  </properties>
 	<build>
 		<plugins>
@@ -34,7 +35,7 @@
 				<version>3.0.0-M3</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>src/test/resources/config/MyTestNG.xml</suiteXmlFile>
+						<suiteXmlFile>${defaultSuitePath}RESTConfig.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
@@ -109,6 +110,34 @@
 		<scope>test</scope>
 	</dependency>
 
+<dependency>
+		<groupId>io.rest-assured</groupId>
+		<artifactId>rest-assured</artifactId>
+		<version>3.1.0</version>
+		<scope>test</scope>
+	</dependency>
+	<!-- To parse Json data -->
+	<dependency>
+		<groupId>io.rest-assured</groupId>
+		<artifactId>json-path</artifactId>
+		<version>3.1.0</version>
+	</dependency>
+	<!-- To validate schema for the Json -->
+	<dependency>
+		<groupId>io.rest-assured</groupId>
+		<artifactId>json-schema-validator</artifactId>
+		<version>3.1.0</version>
+		<scope>test</scope>
+	</dependency>
+	
+	<!-- To parse xml data -->
+	<dependency>
+		<groupId>io.rest-assured</groupId>
+		<artifactId>xml-path</artifactId>
+		<version>3.1.0</version>
+		<scope>test</scope>
+	</dependency>
+	
 	<dependency>
 		<groupId>com.googlecode.json-simple</groupId>
 		<artifactId>json-simple</artifactId>

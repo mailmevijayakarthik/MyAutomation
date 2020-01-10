@@ -18,6 +18,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -42,9 +43,9 @@ public class BaseClass {
 	 * Initalization of Driver value based on the environment.properties details - Docker | local 
 	 * ExtentReport - Not yet customized */ 
 	
-	@BeforeSuite
+	@BeforeMethod
 	public void Initiaziation() throws MalformedURLException {
-		System.out.println("Executing TestNG's @Beforesuite...");
+		System.out.println("Executing TestNG's @BeforeMethod...");
 		
 		prop=getProperty();
 		DriverInitialization(prop.getProperty("browsername"));
@@ -119,12 +120,13 @@ public class BaseClass {
 	 			
 	 			 
 	 		} else if(browsername.equalsIgnoreCase("mobileSafari")) {
-	 			DesiredCapabilities caps = new DesiredCapabilities();
+	 			 DesiredCapabilities caps = new DesiredCapabilities();
 	 			caps.setCapability("platformName", "iOS");
 	 			caps.setCapability(CapabilityType.BROWSER_NAME, "safari");
-	 			caps.setCapability("platformVersion", "10.3");
-	 			caps.setCapability("deviceName", "iPhone 7");
+	 			caps.setCapability("platformVersion", "12.2");
+	 			caps.setCapability("deviceName", "iPhone 8 Plus");
 	 			caps.setCapability("automationName", "XCUITest");
+	 		
 	 			 try {
 	 				driver =new RemoteWebDriver(new URL(prop.getProperty("AppiumurlPort")),caps);
 	 				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

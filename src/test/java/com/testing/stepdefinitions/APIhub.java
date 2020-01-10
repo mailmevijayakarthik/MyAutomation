@@ -12,10 +12,10 @@ import io.restassured.specification.RequestSpecification;
 public class APIhub {
 	@Given("get details from apihub")
 	public void get_details_from_apihub() {
-		RestAssured.baseURI="https://openapi.uat.heb.com/apihub";
+		RestAssured.baseURI="";
 		RequestSpecification httprequest=RestAssured.given();
 		 httprequest.header("Content-Type","application/json");
-		 httprequest.header("apikey","l7xxb9c794f8dc1c440fad8a244b54f4162b");
+		 httprequest.header("apikey","deleted");
 		// Response Object 
 		Response response = httprequest.request(Method.GET, "/v1/stores/");
 		JsonObject jsonObjectmain = new JsonObject();

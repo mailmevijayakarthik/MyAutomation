@@ -13,7 +13,7 @@ import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.PickleEventWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
 
-@CucumberOptions(features=("./src/test/resources/features/SampleRESTAssured.feature"),
+@CucumberOptions(features=("./src/test/resources/features/Restful_services.feature"),
 				 glue= {"com.testing.stepdefinitions"},
 				 strict = true,
 				 plugin= {"pretty","html:target/cucumber",

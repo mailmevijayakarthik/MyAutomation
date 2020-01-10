@@ -21,15 +21,11 @@ public class RESTAssuredStepdef extends BaseRestTest{
 	@Given("GET weather for the city {string}")
 	public void get_weather_for_the_city(String place) {
 		RestAssured.baseURI=prop.getProperty("Endpoint.baseurl");
-		
 		// Request Object 
 		RequestSpecification httprequest=RestAssured.given();
-				
 		// Response Object 
 		Response response = httprequest.request(Method.GET, "utilities/weather/city/"+place);
-		
 		// print response 
-		
 				String Responsebody= response.getBody().asString();
 				System.out.println("Response Body :"+ Responsebody);
 				int statuscode = response.statusCode();
@@ -41,7 +37,7 @@ public class RESTAssuredStepdef extends BaseRestTest{
 	@Given(value="^Register a new customer$", timeout=200)
 	public void registeration_a_new_customer() {
 	    
-RestAssured.baseURI=prop.getProperty("Endpoint.baseurl");
+		RestAssured.baseURI=prop.getProperty("Endpoint.baseurl");
 		
 		// Request Object 
 		RequestSpecification httprequest=RestAssured.given();
@@ -98,7 +94,7 @@ RestAssured.baseURI=prop.getProperty("Endpoint.baseurl");
 	//@Given("Register a new customer")
 	public void register_a_new_customer() {
 	    
-RestAssured.baseURI=prop.getProperty("Endpoint.baseurl");
+		RestAssured.baseURI=prop.getProperty("Endpoint.baseurl");
 		
 		// Request Object 
 		RequestSpecification httprequest=RestAssured.given();

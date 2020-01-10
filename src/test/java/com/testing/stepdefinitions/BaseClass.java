@@ -155,6 +155,7 @@ public class BaseClass {
 			prop.load(new FileInputStream("src/test/resources/environment.properties"));
 			prop.load(new FileInputStream(prop.getProperty("resourcepath")));
 			prop.load(new FileInputStream("src/test/resources/qa/Endpoint.xml"));
+			prop.loadFromXML(new FileInputStream("src/test/resources/qa/Endpoint.xml"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

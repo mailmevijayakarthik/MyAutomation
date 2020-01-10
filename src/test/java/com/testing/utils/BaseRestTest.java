@@ -3,21 +3,26 @@ package com.testing.utils;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Properties;
 
-import org.junit.BeforeClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+
+import io.restassured.response.Response;
 
 public class BaseRestTest {
 	public static Properties prop;
+	public static HashMap<String, Object> mycontainer;
 	
-@BeforeSuite
+@BeforeTest
 public void RESTstartup() {
 
 	System.out.println("Starting REST ASSURED Test...");
 	
 	prop=getProperty();
-
+	mycontainer = Datacontainer();
 }
 
 private Properties getProperty() {
@@ -26,8 +31,8 @@ private Properties getProperty() {
 	System.out.println("Getting all the needed property files");
 	try {
 		prop.load(new FileInputStream("src/test/resources/environment.properties"));
-		prop.load(new FileInputStream(prop.getProperty("resourcepath")));
-		//prop.loadFromXML(new FileInputStream("src/test/resources/qa/Endpoint.xml"));
+		
+		prop.loadFromXML(new FileInputStream("src/test/resources/qa/Endpoint.xml"));
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -39,6 +44,17 @@ private Properties getProperty() {
 	return prop;
 }
 
+@AfterTest
+public void AfterTest() {
+	System.out.println("Deleting the static variables ");
+	mycontainer = null;
+	prop= null;
+}
+
+private HashMap Datacontainer() {
+	HashMap<String, Object> mycontainer = new HashMap<String,Object>();
+	return mycontainer;
+}
 
 
 }

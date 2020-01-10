@@ -1,3 +1,8 @@
-<Endpoint>
-<BaseUrl>https://restcountries.eu/rest/v2</BaseUrl>
-</Endpoint>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Here are some favorites</comment>
+<entry key="Endpoint.baseurl">http://restapi.demoqa.com/</entry>
+<entry key="Timeslot.baseurl">http://timeslot-dot-heb-mls-qa1.appspot.com/</entry>
+
+</properties>
